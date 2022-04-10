@@ -11,8 +11,6 @@ void setup() {
     Serial.println("*     Pigatron Industries CV2MIDI       *");
     Serial.println("=========================================");
     Serial.println();
-    Hardware::hw.init();
-
     mainController.init();
 }
 
