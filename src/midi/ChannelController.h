@@ -21,6 +21,9 @@ class ChannelController {
         void init();
         void update();
 
+        void setMidiChannel(uint8_t midiChannel);
+        void sendProgramChange(uint8_t program);
+
     private:
         MIDIDevice& midiDevice;
         MidiPitchConverter midiPitchConverter;

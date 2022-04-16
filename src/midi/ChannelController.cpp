@@ -21,6 +21,15 @@ void ChannelController::update() {
     }
 }
 
+void ChannelController::setMidiChannel(uint8_t midiChannel) {
+    noteOff();
+    this->midiChannel = midiChannel;
+}
+
+void ChannelController::sendProgramChange(uint8_t program) {
+    midiDevice.sendProgramChange(program, midiChannel);
+}
+
 void ChannelController::noteOn(float octave) {
     midiPitchConverter.noteOn(pitchInput.getValue());
     midiDevice.sendNoteOn(midiPitchConverter.getMidiNote(), 95, midiChannel);

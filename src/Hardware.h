@@ -26,6 +26,11 @@ class Hardware {
         AnalogInput(pitchInput3, A2)
         AnalogInput(pitchInput4, A3)
 
+        AnalogInput(modInput1, A12)
+        AnalogInput(modInput2, A13)
+        AnalogInput(modInput3, A11)
+        AnalogInput(modInput4, A10)
+
 };
 
 #endif

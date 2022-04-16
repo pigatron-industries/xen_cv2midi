@@ -1,4 +1,6 @@
 
+#define CHANNELS 4
+
 // Teensy Pins
 #define ENCODER_BTN_PIN 2
 #define ENCODER_PIN1 3
