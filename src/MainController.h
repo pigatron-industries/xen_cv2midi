@@ -5,23 +5,16 @@
 #include <inttypes.h>
 
 #include "Hardware.h"
-#include "USBHost_t36.h"
-#include "midi/ChannelController.h"
+#include "apps.h"
+#include "Controller.h"
 
-class MainController {
+class MainController : public AbstractMainController<Controller, CONTROLLERS> {
 
     public:
         MainController();
         void init();
         void update();
 
-    private:
-        USBHost usb;
-        MIDIDevice midiDevice = MIDIDevice(usb);
-
-        ChannelController channels[1] = {
-            ChannelController(midiDevice, Hardware::hw.velocityInput1, Hardware::hw.pitchInput1, 1)
-        };
 };
 
 #endif

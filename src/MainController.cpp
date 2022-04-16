@@ -5,23 +5,18 @@
 #include <Arduino.h>
 
 
-MainController::MainController() {
+MainController::MainController() : AbstractMainController(Hardware::hw.encoder) {
 }
 
 void MainController::init() {
     Hardware::hw.init();
-    usb.begin();
-    for(ChannelController& channel : channels) {
-        channel.init();
-    }
+    AbstractMainController::init();
+    encoder.getEncoderButton().update();
 }
 
 void MainController::update() {
-    usb.Task();
-    midiDevice.read();
-
-    for(ChannelController& channel : channels) {
-        channel.update();
-    }
-
+    AbstractMainController::update();
+    // while(!Hardware::hw.midiDevice) {
+    //     Serial.println("disconnected");
+    // }
 }

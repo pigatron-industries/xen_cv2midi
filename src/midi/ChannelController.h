@@ -13,7 +13,7 @@ class ChannelController {
         ChannelController(MIDIDevice& midiDevice, AnalogInputPin<>& velocityInputPin, AnalogInputPin<>& pitchInputPin, uint8_t midiChannel) : 
             midiDevice(midiDevice), 
             gateInput(velocityInputPin),
-            velocityInput(velocityInputPin, -5, 5, 127),
+            velocityInput(velocityInputPin, -5, 5, 0, 127),
             pitchInput(pitchInputPin, -5, 5, 0, 10),
             midiChannel(midiChannel)
         {};
@@ -26,12 +26,14 @@ class ChannelController {
         MidiPitchConverter midiPitchConverter;
 
         AnalogGateInput<> gateInput;
-        EnumInput<> velocityInput;
+        IntegerInput<> velocityInput;
         LinearInput<> pitchInput;
 
         uint8_t midiChannel;
         
         void noteOn(float octave);
+        void pitchBend(float octave);
+        void noteOff();
 };
 
 #endif
